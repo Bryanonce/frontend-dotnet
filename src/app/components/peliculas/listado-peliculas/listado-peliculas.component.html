@@ -1,0 +1,31 @@
+<app-listado-generico [listado]="peliculas">
+  <ng-container cargando>
+    <img
+      src="https://media.tenor.com/images/67d17766117cca8152040f688609472b/tenor.gif"
+      alt="Loading"
+    />
+  </ng-container>
+  <ng-container vacio>
+    <div>Mensaje Personalizado</div>
+  </ng-container>
+  <ng-container contenido>
+    <div
+      class="peliculas"
+      *ngFor="let pelicula of peliculas; let index = index"
+    >
+      <div>Pelicula {{ index }}:</div>
+      <div>
+        {{ pelicula.titulo | lowercase }}
+        <button (click)="remover(index)">Remover</button>
+      </div>
+
+      <div>
+        {{ pelicula.precio | currency }}
+      </div>
+
+      <div>
+        {{ pelicula.fecha | date: "dd-MMMM-yy" | uppercase }}
+      </div>
+    </div>
+  </ng-container>
+</app-listado-generico>
